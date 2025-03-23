@@ -14,32 +14,32 @@ export default function RegisterPage() {
     const { register } = useRegister();
 
     // previusstate can be _ - in JS this value is not nessecary 
-        const registerHandler = async (previusstate, formData) => {
-    
-            const state = Object.fromEntries(formData);
+    const registerHandler = async (previusstate, formData) => {
 
-            const confirm_password = formData.get('confirm-password');
+        const state = Object.fromEntries(formData);
 
-            console.log(confirm_password + ' conf pass');
-            console.log(state.password + ' pass');
+        const confirm_password = formData.get('confirm-password');
 
-            if ( confirm_password !== state.password ){
-                confirm("Passwords are not the same!");
-                return;
-            }
-    
-            // we use the register function in the costom hook to make a POST request with email + pass and to register the user in the Soft Uni practice server
-            const authData = await register(state.email, state.password);
-    
-            // putLoginActionData in Context hook to populate the authentication data
-            // we call the authentication handler for loggin
-            putLoginActionData(authData);
-    
-            navigate("/");
+        console.log(confirm_password + ' conf pass');
+        console.log(state.password + ' pass');
+
+        if (confirm_password !== state.password) {
+            confirm("Passwords are not the same!");
+            return;
         }
-    
-        // state can be _  [ in JS underscore _ means that this value is not nessecary]
-        const [state, registerAction, isPending] = useActionState(registerHandler, { email: '', password: '' });
+
+        // we use the register function in the costom hook to make a POST request with email + pass and to register the user in the Soft Uni practice server
+        const authData = await register(state.email, state.password);
+
+        // putLoginActionData in Context hook to populate the authentication data
+        // we call the authentication handler for loggin
+        putLoginActionData(authData);
+
+        navigate("/");
+    }
+
+    // state can be _  [ in JS underscore _ means that this value is not nessecary]
+    const [state, registerAction, isPending] = useActionState(registerHandler, { email: '', password: '' });
 
     return (
         <>
@@ -54,10 +54,10 @@ export default function RegisterPage() {
                         <input type="email" id="email" name="email" placeholder="maria@email.com" autoComplete="email" />
 
                         <label htmlFor="pass">Password:</label>
-                        <input type="password" name="password" id="register-password"  autoComplete="password"/>
+                        <input type="password" name="password" id="register-password" autoComplete="password" />
 
                         <label htmlFor="con-pass">Confirm Password:</label>
-                        <input type="password" name="confirm-password" id="confirm-password" autoComplete="confirm-password"/>
+                        <input type="password" name="confirm-password" id="confirm-password" autoComplete="confirm-password" />
 
                         <input className="btn submit" type="submit" value="Register" />
 
