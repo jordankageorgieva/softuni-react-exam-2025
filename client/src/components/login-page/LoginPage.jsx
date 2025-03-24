@@ -1,9 +1,11 @@
-import { useActionState, useContext } from "react";
+import { useActionState, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../hookContext/userContext";
 
 export default function LoginPage() {
+
+    const [error, setError] = useState(null);
 
     const navigate = useNavigate();
     // use Context hook for authenticationn data
@@ -17,14 +19,23 @@ export default function LoginPage() {
 
         const state = Object.fromEntries(formData);
 
-        // we use the login function in the costom hook to make a POST request with email + pass
-        const authData = await login(state.email, state.password);
+        try {
+            // we use the login function in the costom hook to make a POST request with email + pass
+            const authData = await login(state.email, state.password);
+            console.log('Login successful:', authData);
+            // Handle successful login (e.g., redirect, update context, etc.)
 
-        // putLoginActionData in Context hook to populate the authentication data
-        // we call the authentication handler for loggin
-        putLoginActionData(authData);
+            // putLoginActionData in Context hook to populate the authentication data
+            // we call the authentication handler for loggin
+            putLoginActionData(authData);
 
-        navigate("/games");
+            navigate("/games");
+
+        } catch (err) {
+            setError(err.message);
+        }
+
+
     }
 
     // state can be _  [ in JS underscore _ means that this value is not nessecary]
@@ -49,6 +60,7 @@ export default function LoginPage() {
                         </p>
                     </div>
                 </form>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
             </section>
         </>
 

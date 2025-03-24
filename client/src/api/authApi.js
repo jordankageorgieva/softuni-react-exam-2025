@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 
 const baseURL = "http://localhost:3030/users/";
 
-
 export const useLogin = () => {
     const loginURL = `${baseURL}login`;
 
@@ -10,28 +9,36 @@ export const useLogin = () => {
     const abortRef = useRef(new AbortController);
 
     const login = async (email, password) => {
+        let resData = null;
+        try {
+            const formData = { email: email, password: password };
 
-        const formData = { email: email, password: password };
+            const response = await fetch(
+                `${loginURL}`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData),
+                    signal: abortRef.current.signal,
+                });
 
-        const response = await fetch(
-            `${loginURL}`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData),
-                signal: abortRef.current.signal,
-            });
+            if (response.status === 403) {
+                throw new Error("Forbidden: Incorrect email or password.");
+            }
 
-        const resData = await response.json();
-        console.log("resData " + JSON.stringify(resData));
+            const resData = await response.json();
+            console.log("resData " + JSON.stringify(resData));
 
-        return resData;
+            return resData;
+        } catch (error) {
+            console.log("Login error: ", error);
+            throw error;
+        }
     }
 
     useEffect(() => {
-
         const abortController = abortRef.current;
 
         // Cleanup function to abort fetch on unmount
@@ -65,5 +72,25 @@ export const useRegister = () => {
     return {
         register
     };
+}
 
+export const useLogout = () => {
+    const logoutURL = `${baseURL}logout`;
+
+    const logout = async () => {
+
+        const response = await fetch(
+            `${logoutURL}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                // signal: abortRef.current.signal,
+            });
+    }
+
+    return {
+        logout
+    };
 }

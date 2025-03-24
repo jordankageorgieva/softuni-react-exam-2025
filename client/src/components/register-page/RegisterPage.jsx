@@ -1,7 +1,7 @@
 import { useActionState, useContext } from "react";
 import { UserContext } from "../../hookContext/userContext";
 import { useRegister } from "../../api/authApi";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 
 export default function RegisterPage() {
 
@@ -62,7 +62,7 @@ export default function RegisterPage() {
                         <input className="btn submit" type="submit" value="Register" />
 
                         <p className="field">
-                            <span>If you already have profile click <a href="#">here</a></span>
+                            <span>If you already have profile click <Link to="/login">here</Link></span>
                         </p>
                     </div>
                 </form>
