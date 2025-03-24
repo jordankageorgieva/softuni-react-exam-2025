@@ -16,10 +16,14 @@ export default function LogoutPage() {
     useEffect(() => {
         const handleLogout = async () => {
             try {
-                await logout(accessToken);
-                // set data to empty object after logout
-                putLoginActionData({});
-                navigate('/');
+                
+                if (accessToken != undefined) {
+                    await logout(accessToken);
+                    // set data to empty object after logout
+                    putLoginActionData({});
+                    navigate('/');
+                }
+                
             } catch (error) {
                 setError('Logout error:', error);
             }
