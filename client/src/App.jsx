@@ -12,6 +12,7 @@ import RegisterPage from './components/register-page/RegisterPage';
 import { Routes, Route } from 'react-router';
 import { UserContext } from './hookContext/userContext';
 import { BrowserRouter as Router } from 'react-router-dom';
+import LogoutPage from './components/logout-page/LogoutPage';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
               <Route path="/games" element={<CataloguePage />} />
               <Route path="/games/:gameId/game-edit" element={<GameEdit />} />
               <Route path="/games/:gameId/game-details" element={<DetailsPage />} />
+              <Route path="/logout" element={<LogoutPage/>} />
             </Routes>
           </main>
           {/* <GameEdit />

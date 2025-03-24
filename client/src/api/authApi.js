@@ -77,14 +77,14 @@ export const useRegister = () => {
 export const useLogout = () => {
     const logoutURL = `${baseURL}logout`;
 
-    const logout = async () => {
+    const logout = async (accessToken) => {
 
         const response = await fetch(
             `${logoutURL}`,
             {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'X-Authorization': accessToken
                 },
                 // signal: abortRef.current.signal,
             });
