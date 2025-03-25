@@ -30,6 +30,8 @@ export default function RegisterPage() {
 
         // we use the register function in the costom hook to make a POST request with email + pass and to register the user in the Soft Uni practice server
         const authData = await register(state.email, state.password);
+        console.log('Register successful:', authData);
+        // Handle successful login (e.g., redirect, update context, etc.)
 
         // putLoginActionData in Context hook to populate the authentication data
         // we call the authentication handler for loggin

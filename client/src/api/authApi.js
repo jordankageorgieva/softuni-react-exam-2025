@@ -53,10 +53,11 @@ export const useLogin = () => {
 export const useRegister = () => {
     const registerURL = `${baseURL}register`;
 
+
     const register = async (email, password) => {
 
         const formData = { email: email, password: password };
-
+        let resData = null;
         const response = await fetch(
             `${registerURL}`,
             {
@@ -67,6 +68,15 @@ export const useRegister = () => {
                 body: JSON.stringify(formData),
                 // signal: abortRef.current.signal,
             });
+
+        if (response.status !== 200) {
+            throw new Error("Forbidden: Incorrect registration.");
+        }
+
+        resData = await response.json();
+        console.log("resData " + JSON.stringify(resData));
+
+        return resData;
     }
 
     return {
