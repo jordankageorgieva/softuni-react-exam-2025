@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { UserContext } from '../../hookContext/userContext';
 import gameServices from '../../services/gameServices';
 
 import {useNavigate} from 'react-router';
@@ -6,13 +8,15 @@ export default function CreatePage() {
     // display game after it is create
     const navigate = useNavigate();
 
+    const {accessToken} = useContext(UserContext);
+
     const submitAction = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
 
         try {
-            const result = await gameServices.create(data);
+            const result = await gameServices.create(data, accessToken);
             console.log(result);
             navigate('/games');
         } catch (error) {

@@ -1,6 +1,7 @@
-import { request } from "../utils/register";
 
-const baseURL = "http://localhost:3030/jsonstore/games";
+//old URL
+// const baseURL = "http://localhost:3030/jsonstore/games";
+const baseURL = "http://localhost:3030/data/games";
 
 export default {
     async getAll() {
@@ -12,12 +13,14 @@ export default {
         return result;
 
     },
-    async create(gameData) {
+    async create(gameData, accessToken) {
+
         const response = await fetch(baseURL,
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Authorization': accessToken,
                 },
                 body: JSON.stringify(gameData)
             }

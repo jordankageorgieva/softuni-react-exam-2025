@@ -1,28 +1,38 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import commentServices from "../../services/commentServices";
 import CommentListItem from "./CommentListItem";
+import { UserContext } from "../../hookContext/userContext";
 
 export default function CommentsList({
     gameId,
     newComment
 }) {
     const [comment, setComment] = useState([]);
+    const { accessToken } = useContext(UserContext);
 
     useEffect(() => {
-        commentServices.getCommentForGameId(gameId)
+        if ( gameId === undefined) {
+            return;
+        }
+
+        commentServices.getCommentForGameId(gameId, accessToken)
             .then(res => {
                 setComment(res);
                 console.log("comment is " + comment);
             })
-    }, [gameId]);
+    }, [gameId, accessToken]);
 
     useEffect(() => {
-        commentServices.getCommentForGameId(gameId)
+        if ( gameId === undefined || newComment === undefined) {
+            return;
+        }
+
+        commentServices.getCommentForGameId(gameId, accessToken)
             .then(res => {
                 setComment(res);
                 console.log("comment is " + comment);
             })
-    }, [newComment]);
+    }, [newComment, gameId, accessToken]);
 
     return (
         <>

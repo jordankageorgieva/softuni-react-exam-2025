@@ -1,4 +1,5 @@
-const baseURL = "http://localhost:3030/jsonstore/comment";
+// const baseURL = "http://localhost:3030/jsonstore/comment";
+const baseURL = "http://localhost:3030/data/comment";
 
 export default {
     async getAll() {
@@ -10,7 +11,7 @@ export default {
         return result;
 
     },
-    async create(gameId, email, comment) {
+    async create(gameId, email, comment, accessToken) {
 
         const commentData = {
             gameId,
@@ -23,7 +24,8 @@ export default {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Authorization': accessToken,
                 },
                 body: JSON.stringify(commentData)
             }
@@ -36,11 +38,28 @@ export default {
         // return request('POST', URL, gameData);
 
     },
-    async getCommentForGameId(gameId){
-        const response = await fetch(`${baseURL}?gameId=${gameId}`);
+    async getCommentForGameId(gameId, accessToken) {
+
+        console.log('accessToken is : ' + accessToken);
+
+        const response = await fetch(`${baseURL}?gameId=${gameId}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Authorization': accessToken,
+                },
+            });
         if (!response.ok) {
-            throw new Error(`Error: ${response.statusText}`);
+            if (response.status === 403) {
+                return;
+            } else {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+           
         }
+
+        
 
         const text = await response.text();
         if (!text) {
