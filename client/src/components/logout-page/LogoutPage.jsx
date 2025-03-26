@@ -16,14 +16,14 @@ export default function LogoutPage() {
     useEffect(() => {
         const handleLogout = async () => {
             try {
-                
+
                 if (accessToken != undefined) {
                     await logout(accessToken);
                     // set data to empty object after logout
                     putLoginActionData({});
                     navigate('/');
                 }
-                
+
             } catch (error) {
                 setError('Logout error:', error);
             }
@@ -37,7 +37,10 @@ export default function LogoutPage() {
             <section id="login-page" className="auth">
                 <form id="login" >
                     <div className="container">
-                        <h2 style={{ color: 'white' }}>Logging out...</h2>
+                        { accessToken === undefined 
+                            ? <h2 style={{ color: 'white' }}>No user to logging out...</h2>
+                            : <h2 style={{ color: 'white' }}>Logging out...</h2>
+        }
                     </div>
                 </form>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
