@@ -69,8 +69,9 @@ export const useRegister = () => {
                 // signal: abortRef.current.signal,
             });
 
-        if (response.status !== 200) {
-            throw new Error("Forbidden: Incorrect registration.");
+        if (response.status !== 200) {            
+                throw Error( "Error: " + response.status);
+            
         }
 
         resData = await response.json();

@@ -1,9 +1,11 @@
-import { useActionState, useContext } from "react";
+import { useActionState, useContext, useState } from "react";
 import { UserContext } from "../../hookContext/userContext";
 import { useRegister } from "../../api/authApi";
 import { useNavigate, Link } from "react-router";
 
 export default function RegisterPage() {
+
+    const [error, setError] = useState(null);
 
     const navigate = useNavigate();
 
@@ -27,17 +29,30 @@ export default function RegisterPage() {
             confirm("Passwords are not the same!");
             return;
         }
+        try {
+            // we use the register function in the costom hook to make a POST request with email + pass and to register the user in the Soft Uni practice server
+            const authData = await register(state.email, state.password);
 
-        // we use the register function in the costom hook to make a POST request with email + pass and to register the user in the Soft Uni practice server
-        const authData = await register(state.email, state.password);
-        console.log('Register successful:', authData);
-        // Handle successful login (e.g., redirect, update context, etc.)
+            console.log('Register successful ', authData);
+            // Handle successful login (e.g., redirect, update context, etc.)
 
-        // putLoginActionData in Context hook to populate the authentication data
-        // we call the authentication handler for loggin
-        putLoginActionData(authData);
+            // putLoginActionData in Context hook to populate the authentication data
+            // we call the authentication handler for loggin
+            putLoginActionData(authData);
 
-        navigate("/");
+            navigate("/");
+
+
+        } catch (error) {
+            console.log('Error during registration:', error);
+            if (error.message.includes('409')) {
+                setError('Email already registered. Please use a different email.');
+            } else {
+                console.log('Error during registration:', error);
+                setError('An error occurred during registration. Please try again.');
+            }
+        }
+
     }
 
     // state can be _  [ in JS underscore _ means that this value is not nessecary]
@@ -68,6 +83,7 @@ export default function RegisterPage() {
                         </p>
                     </div>
                 </form>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
             </section>
         </>
     );

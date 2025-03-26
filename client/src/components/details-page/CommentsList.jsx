@@ -40,7 +40,7 @@ export default function CommentsList({
             <div className="details-comments">
                 <h2>Comments:</h2>
                 {
-                    comment.length > 0 ?
+                    (comment && comment.length > 0 ) ?
                         <>
                             <ul>
                                 {comment.map(comment =>
