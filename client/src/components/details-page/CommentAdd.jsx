@@ -1,5 +1,6 @@
 import { useState } from "react";
 import commentServices from "../../services/commentServices";
+import './CommentAdd.css';
 
 export default function CommentAdd({ gameId, email, addComment }) {
     const [comment, setComment] = useState("");

@@ -1,0 +1,67 @@
+/* General styles for the comment add section */
+.create-comment {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    font-family: 'Arial', sans-serif;
+}
+
+.create-comment label {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: block;
+    text-align: left;
+}
+
+.create-comment .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.create-comment textarea {
+    width: 100%;
+    height: 120px; /* Increased height for better usability */
+    padding: 1rem; /* More padding for a comfortable input area */
+    border: 1px solid #ccc; /* Softer border color */
+    border-radius: 6px; /* Slightly more rounded corners */
+    font-size: 1rem;
+    resize: vertical; /* Allow vertical resizing only */
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Light background for better contrast */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.create-comment textarea:focus {
+    border-color: #007bff; /* Blue border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
+    outline: none; /* Remove default outline */
+}
+
+.create-comment textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.create-comment .btn.submit {
+    align-self: flex-end;
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-comment .btn.submit:hover {
+    background-color: #0056b3;
+}

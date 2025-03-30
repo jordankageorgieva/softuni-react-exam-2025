@@ -5,6 +5,7 @@ import useScrollToTop from "../../hookCustom/useScrollToTop";
 import CommentsList from "./CommentsList";
 import CommentAdd from "./CommentAdd";
 import { UserContext } from "../../hookContext/userContext";
+import './ProjectDetails.css';
 
 export default function DetailsPage() {
     const { gameId } = useParams();
@@ -26,7 +27,7 @@ export default function DetailsPage() {
     }, [gameId]);
 
     const deleteGameHandler = () => {
-        const hasConfirm = confirm(`Are you sure youi want to delete ${game.title} game?`);
+        const hasConfirm = confirm(`Are you sure you want to delete ${game.title} project?`);
         if (hasConfirm) {
             try {
                 gameServices.deleteGame(gameId, accessToken);
@@ -48,7 +49,7 @@ export default function DetailsPage() {
         <>
             {/* <!--Details Page--> */}
             <section id="game-details">
-                <h1>Game Details</h1>
+                <h1>Project Short Overview</h1>
                 <div className="info-section">
 
                     <div className="game-header">

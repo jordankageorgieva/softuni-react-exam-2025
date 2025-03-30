@@ -1,0 +1,53 @@
+/* General styles for the comments list */
+.comments-list {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.comments-list h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Individual comment styling */
+.comments-list .comment {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.comments-list .comment p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.comments-list .comment .author {
+    font-size: 0.9rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+/* No comments message */
+.comments-list .no-comments {
+    text-align: center;
+    color: #555;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    font-style: italic;
+}
