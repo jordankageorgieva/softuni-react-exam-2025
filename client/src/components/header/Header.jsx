@@ -12,12 +12,12 @@ export default function Header() {
                 {/* <!-- Navigation --> */}
                 <h1><Link className="home" to="/">Home</Link></h1>
                 <nav>
-                    <Link to="/games">All projects</Link>
+                    <Link to="/projects">All projects</Link>
                     {/* <!-- Logged-in users --> */}
                     {email
                         ? (
                             <div id="user">
-                                <Link to="/games/create">Add Project</Link>
+                                <Link to="/projects/create">Add Project</Link>
                                 <Link to="/logout">Logout</Link>
                                 <Link>{email}</Link>
                             </div>

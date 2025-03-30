@@ -36,10 +36,10 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<LoginPage  />} />
               <Route path="/register" element={<RegisterPage />} />
-              <Route path="/games/create" element={<CreatePage />} />
-              <Route path="/games" element={<CataloguePage />} />
-              <Route path="/games/:gameId/game-edit" element={<GameEdit />} />
-              <Route path="/games/:gameId/game-details" element={<DetailsPage />} />
+              <Route path="/projects/create" element={<CreatePage />} />
+              <Route path="/projects" element={<CataloguePage />} />
+              <Route path="/projects/:gameId/project-edit" element={<GameEdit />} />
+              <Route path="/projects/:gameId/project-details" element={<DetailsPage />} />
               <Route path="/logout" element={<LogoutPage/>} />
             </Routes>
           </main>

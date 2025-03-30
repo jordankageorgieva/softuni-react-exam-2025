@@ -17,7 +17,7 @@ export default function CataloguePageItem({
                     <img src={imageUrl}/>
                     <h6>{category}</h6>
                     <h2>{title}</h2>
-                    <Link to={`/games/${_id}/game-details`} className="details-button">Details</Link>
+                    <Link to={`/projects/${_id}/project-details`} className="details-button">Details</Link>
                 </div>
 
             </div>
