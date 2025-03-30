@@ -1,7 +1,8 @@
 
 //old URL
 // const baseURL = "http://localhost:3030/jsonstore/games";
-const baseURL = "http://localhost:3030/data/games";
+// const baseURL = "http://localhost:3030/data/games";
+const baseURL = "http://localhost:3030/data/projects";
 
 export default {
     async getAll() {
@@ -43,7 +44,7 @@ export default {
 
         return data;
     },
-    async deleteGame(gameId) {
+    async deleteGame(gameId, accessToken) {
 
         let isUserDelete = false;
         const response = await fetch(
@@ -51,7 +52,8 @@ export default {
             {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-Authorization': accessToken,
             },
         });
 

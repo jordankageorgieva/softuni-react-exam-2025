@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import gameServices from "../../services/gameServices";
 import CataloguePageItem from "./CataloguePageItem";
+import './CataloguePage.css';
 
 export default function CataloguePage() {
     const [games, setGames] = useState([]);
@@ -20,7 +21,7 @@ export default function CataloguePage() {
         <>
             {/* <!-- Catalogue --> */}
             <section id="catalog-page">
-                <h1>All Games</h1>
+                <h1>List of the Professional Prjects in [DXC, CSC, OBS] company</h1>
                 {/* <!-- Display div: with information about every game (if any) --> */}
 
                 {games.length > 0 ?

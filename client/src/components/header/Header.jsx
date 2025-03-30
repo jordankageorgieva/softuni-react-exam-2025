@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { UserContext } from "../../hookContext/userContext";
 import { useContext } from "react";
+import './Header.css';
 
 export default function Header() {
     const { email } = useContext(UserContext);
@@ -9,14 +10,14 @@ export default function Header() {
         <>
             <header>
                 {/* <!-- Navigation --> */}
-                <h1><Link className="home" to="/">GamesPlay</Link></h1>
+                <h1><Link className="home" to="/">Home</Link></h1>
                 <nav>
-                    <Link to="/games">All games</Link>
+                    <Link to="/games">All projects</Link>
                     {/* <!-- Logged-in users --> */}
                     {email
                         ? (
                             <div id="user">
-                                <Link to="/games/create">Create Game</Link>
+                                <Link to="/games/create">Add Project</Link>
                                 <Link to="/logout">Logout</Link>
                                 <Link>{email}</Link>
                             </div>

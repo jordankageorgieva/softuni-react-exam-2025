@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { UserContext } from '../../hookContext/userContext';
 import gameServices from '../../services/gameServices';
+import './CreatePage.css';
 
 import {useNavigate} from 'react-router';
 
@@ -33,22 +34,26 @@ export default function CreatePage() {
                 <form id="create" onSubmit={submitAction}>
                     <div className ="container">
 
-                        <h1>Create Game</h1>
-                        <label htmlFor="leg-title">Legendary title:</label>
-                        <input type="text" id="title" name="title" placeholder="Enter game title..." />
+                        <h1>Insert Project</h1>
+                        <label htmlFor="leg-title">Client:</label>
+                        <input type="text" id="title" name="title" placeholder="Enter project title..." />
 
                         <label htmlFor="category">Category:</label>
-                        <input type="text" id="category" name="category" placeholder="Enter game category..." />
+                        <input type="text" id="category" name="category" placeholder="Enter project category..." />
 
-                        <label htmlFor="levels">MaxLevel:</label>
-                        <input type="number" id="maxLevel" name="maxLevel" min="1" placeholder="1" />
+                        <label htmlFor="levels">ComplexityLevel:</label>
+                        <input type="number" id="complexityLevel" name="complexityLevel" min="1" placeholder="1" />
 
                         <label htmlFor="game-img">Image:</label>
                         <input type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />
 
                         <label htmlFor="summary">Summary:</label>
                         <textarea name="summary" id="summary"></textarea>
-                        <input className ="btn submit" type="submit" value="Create Game" />
+                        
+
+                        <label htmlFor="environment">Technical environment:</label>
+                        <textarea name="environment" id="environment"></textarea>
+                        <input className ="btn submit" type="submit" value="Create Project" />
                     </div>
                 </form>
             </section>

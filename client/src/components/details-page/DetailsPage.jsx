@@ -11,7 +11,7 @@ export default function DetailsPage() {
     const [game, setGame] = useState([]);
     const [newComment, setNewComment] = useState();
 
-    const {email} = useContext(UserContext);
+    const {email, accessToken } = useContext(UserContext);
     console.log(email + " email" );
 
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function DetailsPage() {
         const hasConfirm = confirm(`Are you sure youi want to delete ${game.title} game?`);
         if (hasConfirm) {
             try {
-                gameServices.deleteGame(gameId);
+                gameServices.deleteGame(gameId, accessToken);
                 navigate('/games');
             } catch (error) {
                 console.error('Error deleting game:', error);

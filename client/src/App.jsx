@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './index.css'
 import './App.css';
 
 import CataloguePage from './components/catalogue-page/CataloguePage';
@@ -25,7 +26,6 @@ function App() {
 
   return (
     <>
-    // The Provider helps to inject the data with useContext through all the components in the tree (in the application)
       <UserContext.Provider value={{...authData, putLoginActionData} }>
         <div id="box">
           <Header />

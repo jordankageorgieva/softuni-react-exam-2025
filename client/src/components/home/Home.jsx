@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"; // Correct import for Link
 import { useEffect, useState } from "react";
 import gameServices from "../../services/gameServices";
+import './Home.css';
 
 export default function Home() {
     const [games, setGames] = useState([]);
@@ -31,16 +32,17 @@ export default function Home() {
         <>
             <section id="welcome-world">
                 <div className="welcome-message">
-                    <h2>ALL new games are</h2>
-                    <h3>Only in GamesPlay</h3>
+                    <h2>This SPA document provides an overview of the CSC/DXC OBS projects available during the period from 2007 to 2024. These projects span various industries, including finance, insurance, e-commerce, and sports applications.</h2>
+                    <h3>The scope of work covers full-stack development, database management, data migration, DevOps, and security compliance. Technologies utilized include Java, Spring Boot, Hibernate, JavaScript, React, SQL, Oracle DB, MySQL, DB2, WebSphere, and AWS.
+                        For a detailed breakdown of each project, including roles, technologies, and key contributions, please refer to the project descriptions.</h3>
                 </div>
-                <img src="./images/four_slider_img01.png" alt="Gaming banner" />
+                {/* <img src="./images/four_slider_img01.png" alt="Gaming banner" /> */}
 
                 <div id="home-page">
-                    <h1>Latest Games</h1>
+                    <h1>Latest Projects</h1>
 
                     {loading ? (
-                        <p>Loading games...</p>
+                        <p>Loading projects...</p>
                     ) : error ? (
                         <p className="error-message">{error}</p>
                     ) : games.length > 0 ? (
@@ -63,7 +65,7 @@ export default function Home() {
                             </div>
                         ))
                     ) : (
-                        <p className="no-articles">No games yet</p>
+                        <p className="no-articles">No projects yet</p>
                     )}
                 </div>
             </section>

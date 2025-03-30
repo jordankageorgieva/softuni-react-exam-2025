@@ -1,0 +1,72 @@
+/* General styles for the header */
+header {
+    background-color: #007bff; /* Professional blue background */
+    color: #fff; /* White text for contrast */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+header h1 .home {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header h1 .home:hover {
+    color: #d1e7ff; /* Lighter blue on hover */
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    color: #fff;
+}
+
+#user, #guest {
+    display: flex;
+    gap: 1rem;
+}
+
+#user a, #guest a {
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#user a:hover, #guest a:hover {
+    background-color: #fff;
+    color: #007bff;
+}
+
+#user a:last-child {
+    background-color: transparent;
+    border: none;
+    color: #d1e7ff;
+    cursor: default;
+    font-weight: bold;
+}
