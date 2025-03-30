@@ -30,7 +30,7 @@ export default function LoginPage() {
             // we call the authentication handler for loggin
             putLoginActionData(authData);
 
-            navigate("/games");
+            navigate("/projects");
 
         } catch (err) {
             setError(err.message);
@@ -46,7 +46,7 @@ export default function LoginPage() {
     return (
         <>
             {/* <!-- Login Page ( Only for Guest users ) --> */}
-            <section id="login-page" className="auth">
+            <div className="login-form">
                 <form id="login" action={loginAction}>
                     <div className="container">
                         <div className="brand-logo"></div>
@@ -62,7 +62,7 @@ export default function LoginPage() {
                     </div>
                 </form>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-            </section>
+            </div>
         </>
 
     );

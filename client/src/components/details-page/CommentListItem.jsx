@@ -1,12 +1,14 @@
+import './CommentListItem.css';
+
 export default function CommentListItem({
-    email,
+    username,
     comment
 }) {
     return (
         <>
             {/* <!-- list all comments for current game (If any) --> */}
             <li className="comment">
-                <p>{email} : {comment}</p>
+                <p>{username} : <span>{comment}</span></p>
             </li>
         </>
     );

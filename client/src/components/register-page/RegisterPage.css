@@ -1,0 +1,89 @@
+/* General styles for the register form container */
+.register-form {
+    margin: 3rem auto;
+    width: 100%;
+    max-width: 500px; /* Restrict the width for better readability */
+    background-color: #ffffff; /* White background for a clean look */
+    border: 1px solid #ddd; /* Subtle border for a card-like appearance */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    padding: 2.5rem; /* Spacious padding for a comfortable layout */
+    font-family: 'Arial', sans-serif; /* Professional font */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding is included in width/height */
+}
+
+/* Form heading */
+.register-form h1 {
+    font-size: 2rem; /* Larger font size for emphasis */
+    color: #333; /* Neutral dark color for the heading */
+    margin-bottom: 2rem; /* Spacing below the heading */
+    font-weight: bold;
+    text-transform: uppercase; /* Uppercase for a professional look */
+    letter-spacing: 1px; /* Slight letter spacing for readability */
+}
+
+/* Input fields */
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+    width: 100%;
+    padding: 1rem; /* Comfortable padding for usability */
+    margin-bottom: 1.5rem; /* Spacing between inputs */
+    border: 1px solid #ccc; /* Softer border color */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Light background for better contrast */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-form input[type="text"]:focus,
+.register-form input[type="email"]:focus,
+.register-form input[type="password"]:focus {
+    border-color: #007bff; /* Blue border on focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
+    outline: none; /* Remove default outline */
+}
+
+/* Placeholder styling */
+.register-form input::placeholder {
+    color: #aaa;
+    font-style: italic;
+    font-size: 0.95rem; /* Slightly smaller placeholder text */
+}
+
+/* Submit button */
+.register-form .btn.submit {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-form .btn.submit:hover {
+    background-color: #0056b3;
+}
+
+/* Additional links (e.g., login link) */
+.register-form .links {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.register-form .links a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.register-form .links a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

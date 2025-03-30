@@ -27,7 +27,7 @@ export default function CommentsList({
             return;
         }
 
-        commentServices.getCommentForGameId(gameId, accessToken)
+        commentServices.getCommentForGameId(gameId)
             .then(res => {
                 setComment(res);
                 console.log("comment is " + comment);
@@ -46,7 +46,7 @@ export default function CommentsList({
                                 {comment.map(comment =>
                                     <CommentListItem
                                         key={comment._id}
-                                        {...comment}
+                                        {...comment.data}
                                     />
                                 )}
                             </ul>

@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import useScrollToTop from "../../hookCustom/useScrollToTop";
 import { useEffect, useState } from "react";
 import gameServices from "../../services/gameServices";
+import './GameEdit.css';
 
 export default function GameEdit() {
     const { gameId } = useParams();
@@ -34,11 +35,11 @@ export default function GameEdit() {
     return (
         <>
             {/* <!-- Edit Page ( Only for the creator )--> */}
-            <section id="edit-page" className="auth">
+            <section id="form-page" className="auth">
                 <form id="edit" onSubmit={saveGame}>
                     <div className="container">
 
-                        <h1>Edit Game</h1>
+                        <h1>Edit Project</h1>
                         <label htmlFor="leg-title">Legendary title:</label>
                         <input type="text" id="title" name="title" defaultValue={game.title} />
 

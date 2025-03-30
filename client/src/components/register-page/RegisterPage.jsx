@@ -2,6 +2,7 @@ import { useActionState, useContext, useState } from "react";
 import { UserContext } from "../../hookContext/userContext";
 import { useRegister } from "../../api/authApi";
 import { useNavigate, Link } from "react-router";
+import './RegisterPage.css';
 
 export default function RegisterPage() {
 
@@ -61,7 +62,7 @@ export default function RegisterPage() {
     return (
         <>
             {/* <!-- Register Page ( Only for Guest users ) --> */}
-            <section id="register-page" className="content auth">
+            <div className="register-form">
                 <form id="register" action={registerAction}>
                     <div className="container">
                         <div className="brand-logo"></div>
@@ -84,7 +85,7 @@ export default function RegisterPage() {
                     </div>
                 </form>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-            </section>
+            </div>
         </>
     );
 }

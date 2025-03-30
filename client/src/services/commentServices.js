@@ -1,5 +1,5 @@
-// const baseURL = "http://localhost:3030/jsonstore/comment";
-const baseURL = "http://localhost:3030/data/comment";
+const baseURL = "http://localhost:3030/jsonstore/comment";
+// const baseURL = "http://localhost:3030/data/comment";
 
 export default {
     async getAll() {
@@ -11,12 +11,11 @@ export default {
         return result;
 
     },
-    async create(gameId, email, comment, accessToken) {
+    async create(data, gameId) {
 
         const commentData = {
-            gameId,
-            email,
-            comment,
+            gameId: gameId,
+            data,
             createdAt: new Date().toISOString()
         };
 
@@ -25,7 +24,6 @@ export default {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-Authorization': accessToken,
                 },
                 body: JSON.stringify(commentData)
             }
@@ -38,36 +36,22 @@ export default {
         // return request('POST', URL, gameData);
 
     },
-    async getCommentForGameId(gameId, accessToken) {
-
-        console.log('accessToken is : ' + accessToken);
-
-        const response = await fetch(`${baseURL}?gameId=${gameId}`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Authorization': accessToken,
-                },
-            });
+    async getCommentForGameId(gameId) {
+        const response = await fetch(`${baseURL}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    
         if (!response.ok) {
-            if (response.status === 403) {
-                return;
-            } else {
-                throw new Error(`Error: ${response.statusText}`);
-            }
-           
+            throw new Error('Failed to fetch comments');
         }
-
-        
-
-        const text = await response.text();
-        if (!text) {
-            return [];
-        }
-
-        const data = await response.json();
-        const result = Object.values(data).filter(comment => comment.gameId === gameId);
+    
+        const data = await response.json(); // Parse the response body as JSON
+        const result = Object.values(data).filter(comment => comment.gameId === gameId); // Filter comments by gameId
+    
+        console.log('Filtered comments:', result);
         return result;
     }
 }

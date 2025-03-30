@@ -12,8 +12,8 @@ export default function DetailsPage() {
     const [game, setGame] = useState([]);
     const [newComment, setNewComment] = useState();
 
-    const {email, accessToken } = useContext(UserContext);
-    console.log(email + " email" );
+    const { email, accessToken } = useContext(UserContext);
+    console.log(email + " email");
 
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ export default function DetailsPage() {
         if (hasConfirm) {
             try {
                 gameServices.deleteGame(gameId, accessToken);
-                navigate('/games');
+                navigate('/projects');
             } catch (error) {
                 console.error('Error deleting game:', error);
             }
@@ -55,27 +55,28 @@ export default function DetailsPage() {
                     <div className="game-header">
                         <img className="game-img" src={game.imageUrl} />
                         <h1>{game.title}</h1>
-                        <span className="levels">MaxLevel: {game.maxLevel}</span>
                         <p className="type">{game.category}</p>
+                        <p className="type">{game.environment}</p>
                     </div>
 
                     <p className="text">
                         {game.summary}
                     </p>
-                    <CommentsList gameId={game._id} newComment={newComment}/>
+                    <CommentsList gameId={game._id} newComment={newComment} />
 
 
                     {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
-                    <div className="buttons">
-                        <Link to={`/games/${game._id}/game-edit`} className="button">Edit</Link>
-                        <button onClick={deleteGameHandler}
-                            className="button">Delete</button>
-                    </div>
+                    {accessToken &&
+                        (<div className="buttons">
+                            <Link to={`/projects/${game._id}/project-edit`} className="button">Edit</Link>
+                            <button onClick={deleteGameHandler}
+                                className="button">Delete</button>
+                        </div>)
+                    }
                 </div>
 
                 <CommentAdd
                     gameId={game._id}
-                    email={email}
                     addComment={addCommentHandler}
                 />
 

@@ -32,7 +32,7 @@ export default function Home() {
         <>
             <section id="welcome-world">
                 <div className="welcome-message">
-                    <h2>This SPA document provides an overview of the CSC/DXC OBS projects available during the period from 2007 to 2024. These projects span various industries, including finance, insurance, e-commerce, and sports applications.</h2>
+                    <h2>This SPA document provides an overview of the CSC/DXC OBS projects available during the period from 2007 to 2024. I have worked on projects across diverse industries, including finance, insurance, e-commerce, and sports applications.</h2>
                     <h3>The scope of work covers full-stack development, database management, data migration, DevOps, and security compliance. Technologies utilized include Java, Spring Boot, Hibernate, JavaScript, React, SQL, Oracle DB, MySQL, DB2, WebSphere, and AWS.
                         For a detailed breakdown of each project, including roles, technologies, and key contributions, please refer to the project descriptions.</h3>
                 </div>
@@ -58,7 +58,7 @@ export default function Home() {
                                     ))}
                                 </div>
                                 <div className="data-buttons">
-                                    <Link to={`/games/${game._id}/game-details`} className="btn details-btn">
+                                    <Link to={`/projects/${game._id}/project-details`} className="btn details-btn">
                                         Details
                                     </Link>
                                 </div>
