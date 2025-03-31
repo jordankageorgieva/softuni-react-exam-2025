@@ -19,7 +19,7 @@ export default function CreatePage() {
         try {
             const result = await gameServices.create(data, accessToken);
             console.log(result);
-            navigate('/games');
+            navigate('/projects');
         } catch (error) {
             console.error('Error creating game:', error);
         }

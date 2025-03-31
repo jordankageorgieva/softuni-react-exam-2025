@@ -26,9 +26,9 @@ export default function GameEdit() {
 
         try {
             gameServices.updateGame(gameId, data);
-            navigate(`/games/${gameId}/game-details`);
+            navigate(`/projects/${gameId}/project-details`);
         } catch (error) {
-            console.error('Error updating game:', error);
+            console.error('Error updating project:', error);
         }
     }
     
@@ -39,7 +39,7 @@ export default function GameEdit() {
                 <form id="edit" onSubmit={saveGame}>
                     <div className="container">
 
-                        <h1>Edit Project</h1>
+                        <h1>Edit Current Project</h1>
                         <label htmlFor="leg-title">Legendary title:</label>
                         <input type="text" id="title" name="title" defaultValue={game.title} />
 
@@ -54,7 +54,7 @@ export default function GameEdit() {
 
                         <label htmlFor="summary">Summary:</label>
                         <textarea name="summary" id="summary" defaultValue={game.summary}></textarea>
-                        <input className="btn submit" type="submit" value="Edit Game" />
+                        <input className="btn submit" type="submit" value="Edit Current Project" />
 
                     </div>
                 </form>
