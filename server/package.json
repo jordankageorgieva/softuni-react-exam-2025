@@ -1,0 +1,12 @@
+{
+  "name": "server-softuni-react-exam-2025",
+  "version": "1.0.0",
+  "description": "dxc csc obs java projects",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
