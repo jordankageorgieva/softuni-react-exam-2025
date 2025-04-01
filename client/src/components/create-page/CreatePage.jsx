@@ -41,8 +41,8 @@ export default function CreatePage() {
                         <label htmlFor="category">Category:</label>
                         <input type="text" id="category" name="category" placeholder="Enter project category..." />
 
-                        <label htmlFor="levels">ComplexityLevel:</label>
-                        <input type="number" id="complexityLevel" name="complexityLevel" min="1" placeholder="1" />
+                        {/* <label htmlFor="levels">ComplexityLevel:</label>
+                        <input type="number" id="complexityLevel" name="complexityLevel" min="1" placeholder="1" /> */}
 
                         <label htmlFor="game-img">Image:</label>
                         <input type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />

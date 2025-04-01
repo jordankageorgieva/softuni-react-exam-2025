@@ -12,10 +12,10 @@ export default {
         return result;
 
     },
-    async create(data, gameId) {
+    async create(data, projectId) {
 
         const commentData = {
-            gameId: gameId,
+            projectId: projectId,
             data,
             createdAt: new Date().toISOString()
         };
@@ -37,7 +37,7 @@ export default {
         // return request('POST', URL, gameData);
 
     },
-    async getCommentForGameId(gameId) {
+    async getCommentForGameId(projectId) {
         const response = await fetch(`${baseURL}`, {
             method: 'GET',
             headers: {
@@ -50,7 +50,7 @@ export default {
         }
     
         const data = await response.json(); // Parse the response body as JSON
-        const result = Object.values(data).filter(comment => comment.gameId === gameId); // Filter comments by gameId
+        const result = Object.values(data).filter(comment => comment.projectId === projectId); // Filter comments by gameId
     
         console.log('Filtered comments:', result);
         return result;
