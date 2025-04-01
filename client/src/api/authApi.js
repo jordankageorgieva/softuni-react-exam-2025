@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 
-const baseURL = "http://localhost:3030/users/";
+// Get the base URL from the environment variables
+const baseURL = `${import.meta.env.VITE_APP_SERVER_URL}/users/`;
+// const baseURL = "http://localhost:3030/users/";
 
 export const useLogin = () => {
     const loginURL = `${baseURL}login`;

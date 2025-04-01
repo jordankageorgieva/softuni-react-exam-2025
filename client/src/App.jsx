@@ -17,6 +17,8 @@ import LogoutPage from './components/logout-page/LogoutPage';
 
 function App() {
 
+  console.log(import.meta.env.VITE_APP_API_URL_DATA); // Logs the server URL from the .env file
+
   const [authData, setAuthData] = useState({});
 
    // putLoginActionData is the authentication handler for loggin

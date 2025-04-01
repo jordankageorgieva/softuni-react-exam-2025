@@ -1,4 +1,5 @@
-const baseURL = "http://localhost:3030/jsonstore/comment";
+// Get the base URL from the environment variables
+const baseURL = `${import.meta.env.VITE_APP_API_URL_JSONSTORE}/comment`;
 // const baseURL = "http://localhost:3030/data/comment";
 
 export default {

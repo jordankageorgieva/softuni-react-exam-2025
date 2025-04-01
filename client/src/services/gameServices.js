@@ -1,8 +1,7 @@
 
-//old URL
-// const baseURL = "http://localhost:3030/jsonstore/games";
-// const baseURL = "http://localhost:3030/data/games";
-const baseURL = "http://localhost:3030/data/projects";
+// Get the base URL from the environment variables
+const baseURL = `${import.meta.env.VITE_APP_API_URL_DATA}/projects`;
+// const baseURL = "http://localhost:3030/data/projects";
 
 export default {
     async getAll() {
