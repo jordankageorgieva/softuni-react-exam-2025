@@ -32,8 +32,19 @@ export default function LoginPage() {
 
             navigate("/projects");
 
-        } catch (err) {
-            setError(err.message);
+        } catch (error) {
+            console.error('Error during login:', error);
+    
+            // Handle specific error messages
+            if (error.message.includes('401')) {
+                setError('Invalid email or password. Please try again.');
+            } else if (error.message.includes('403')) {
+                setError('Your account is not authorized. Please contact support.');
+            } else if (error.message.includes('500')) {
+                setError('Server error. Please try again later.');
+            } else {
+                setError('An unexpected error occurred. Please try again.');
+            }
         }
 
 

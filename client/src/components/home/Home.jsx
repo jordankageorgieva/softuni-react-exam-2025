@@ -16,7 +16,7 @@ export default function Home() {
                 setGames(result);
             } catch (err) {
                 if (err.name !== "AbortError") {
-                    setError("Failed to load games. Please try again later.");
+                    setError("Failed to load projects. Please try again later.");
                 }
             } finally {
                 setLoading(false);
