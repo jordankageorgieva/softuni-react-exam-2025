@@ -65,16 +65,17 @@ export default {
         
         return isUserDelete;
     },
-    async updateGame (gameId, formData){
+    async updateGame (projectId, formData, accessToken){
 
-        formData._id = gameId;
+        formData._id = projectId;
 
         const response = await fetch(
-            `${baseURL}/${gameId}`, 
+            `${baseURL}/${projectId}`, 
             {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-Authorization': accessToken,
             },
             body: JSON.stringify(formData),
         });
