@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../hookContext/userContext";
 import './LoginForm.css';
+import { Button} from 'antd';
 
 export default function LoginPage() {
 
@@ -66,7 +67,8 @@ export default function LoginPage() {
                         <input type="email" id="email" name="email" placeholder="Sokka@gmail.com" autoComplete="email" />
                         <label htmlFor="login-pass">Password:</label>
                         <input type="password" id="login-password" name="password" fdprocessedid="45q4he" autoComplete="password" />
-                        <input type="submit" className="btn submit" value="Login" disabled={isPending} />
+                        {/* <input type="submit" className="btn submit" value="Login" disabled={isPending} /> */}
+                        <Button htmlType="submit" type="primary" className="btn submit" disabled={isPending}>Login</Button>
                         <p className="field">
                             <span>If you don't have profile click <Link to="/register">here</Link></span>
                         </p>

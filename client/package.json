@@ -11,6 +11,7 @@
     "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
+    "antd": "^5.24.6",
     "idb": "^8.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

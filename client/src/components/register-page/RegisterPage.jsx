@@ -3,6 +3,7 @@ import { UserContext } from "../../hookContext/userContext";
 import { useRegister } from "../../api/authApi";
 import { useNavigate, Link } from "react-router";
 import './RegisterPage.css';
+import { Button} from 'antd';
 
 export default function RegisterPage() {
 
@@ -77,7 +78,7 @@ export default function RegisterPage() {
                         <label htmlFor="con-pass">Confirm Password:</label>
                         <input type="password" name="confirm-password" id="confirm-password" autoComplete="confirm-password" />
 
-                        <input className="btn submit" type="submit" value="Register" />
+                        <Button htmlType="submit" type="primary" className="btn submit" disabled={isPending}>Login</Button>
 
                         <p className="field">
                             <span>If you already have profile click <Link to="/login">here</Link></span>
