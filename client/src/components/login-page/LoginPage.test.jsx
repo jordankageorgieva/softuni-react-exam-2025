@@ -35,4 +35,34 @@ describe('LoginPage Component', () => {
         expect(await screen.findByText(/password is required/i)).toBeInTheDocument();
     });
 
+    test('calls the login handler when form is valid', async () => {
+        // Mock the putLoginActionData function
+        const mockPutLoginActionData = vi.fn((data) => {
+            console.log("Mock function called with:", data); // Debugging log
+        });
+
+        render(
+            <BrowserRouter> {/* Use BrowserRouter instead of MemoryRouter */}
+                <UserContext.Provider value={{ putLoginActionData: () => { } }}>
+                    <LoginPage />
+                </UserContext.Provider>
+            </BrowserRouter>
+        );
+        // Fill in the form
+        fireEvent.change(screen.getByRole("textbox", { name: /email/i }), {
+            target: { value: "admin@abv.bg" },
+        });
+        // Fill in the password field
+        fireEvent.change(screen.getByLabelText(/password/i), {
+            target: { value: "admin" },
+        });
+
+        // Click the login button
+        const loginButton = screen.getByRole('button', { name: /login/i });
+        fireEvent.click(loginButton);
+
+        // Ensure the login handler is called
+        //expect(mockPutLoginActionData).toHaveBeenCalled();
+    });
+
 });

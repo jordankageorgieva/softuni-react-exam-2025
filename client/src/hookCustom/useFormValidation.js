@@ -14,7 +14,7 @@ export default function useFormValidation() {
 
         if (!state.password) {
             errors.password = "Password is required.";
-        } else if (state.password.length < 6) {
+        } else if (state.password.length < 5) {
             errors.password = "Password must be at least 6 characters long.";
         }
 

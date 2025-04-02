@@ -63,7 +63,7 @@ export default function LoginPage() {
                         />
                         {validationErrors.email && <p style={{ color: 'red' }}>{validationErrors.email}</p>}
 
-                        <label htmlFor="login-pass">Password:</label>
+                        <label htmlFor="login-password">Password:</label>
                         <input
                             type="password"
                             id="login-password"
