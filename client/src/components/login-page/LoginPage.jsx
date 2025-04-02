@@ -8,7 +8,7 @@ import { Button } from 'antd';
 
 export default function LoginPage() {
     const [error, setError] = useState(null);
-    const { validationErrors, validateForm } = useFormValidation(); // Use the custom hook
+    const { validationErrors, validateForm } = useFormValidation(); // Use data validation
 
     const navigate = useNavigate();
     const { putLoginActionData } = useContext(UserContext);
@@ -52,7 +52,7 @@ export default function LoginPage() {
                 <form id="login" action={loginAction}>
                     <div className="container">
                         <div className="brand-logo"></div>
-                        <h1>Login</h1>
+                        <h1>Login Form</h1>
                         <label htmlFor="email">Email:</label>
                         <input
                             type="email"
