@@ -39,7 +39,7 @@ export default function Home() {
                 {/* <img src="./images/four_slider_img01.png" alt="Gaming banner" /> */}
 
                 <div id="home-page">
-                    <h1>Latest Projects</h1>
+                    <h1>Latest Project-Sphere</h1>
 
                     {loading ? (
                         <p>Loading projects...</p>
