@@ -3,66 +3,56 @@ import { UserContext } from "../../hookContext/userContext";
 import { useRegister } from "../../api/authApi";
 import { useNavigate, Link } from "react-router";
 import './RegisterPage.css';
-import { Button} from 'antd';
+import { Button } from 'antd';
+import useFormValidation from "../../hookCustom/useFormValidation"; // Import the custom hook
 
 export default function RegisterPage() {
-
     const [error, setError] = useState(null);
-
+    const { validationErrors, validateForm } = useFormValidation(); // Use the custom hook for validation
     const navigate = useNavigate();
-
-    // use Context hook for authenticationn data
     const { putLoginActionData } = useContext(UserContext);
-
-    //useRegister is a custom hook and we use the function register to send the data
     const { register } = useRegister();
 
-    // previusstate can be _ - in JS this value is not nessecary 
     const registerHandler = async (previusstate, formData) => {
-
         const state = Object.fromEntries(formData);
+        const confirmPassword = formData.get('confirm-password');
 
-        const confirm_password = formData.get('confirm-password');
+        // Validate the form
+        const errors = validateForm(state);
+        if (!state.password || state.password !== confirmPassword) {
+            errors.confirmPassword = "Passwords do not match.";
+        }
 
-        console.log(confirm_password + ' conf pass');
-        console.log(state.password + ' pass');
-
-        if (confirm_password !== state.password) {
-            confirm("Passwords are not the same!");
+        if (Object.keys(errors).length > 0) {
+            setError(null); // Clear any previous error
             return;
         }
+
         try {
-            // we use the register function in the costom hook to make a POST request with email + pass and to register the user in the Soft Uni practice server
+            // Register the user
             const authData = await register(state.email, state.password);
+            console.log('Register successful:', authData);
 
-            console.log('Register successful ', authData);
-            // Handle successful login (e.g., redirect, update context, etc.)
-
-            // putLoginActionData in Context hook to populate the authentication data
-            // we call the authentication handler for loggin
+            // Update context with authentication data
             putLoginActionData(authData);
 
+            // Redirect to the home page
             navigate("/");
-
-
         } catch (error) {
-            console.log('Error during registration:', error);
+            console.error('Error during registration:', error);
             if (error.message.includes('409')) {
                 setError('Email already registered. Please use a different email.');
             } else {
-                console.log('Error during registration:', error);
                 setError('An error occurred during registration. Please try again.');
             }
         }
+    };
 
-    }
-
-    // state can be _  [ in JS underscore _ means that this value is not nessecary]
     const [state, registerAction, isPending] = useActionState(registerHandler, { email: '', password: '' });
 
     return (
         <>
-            {/* <!-- Register Page ( Only for Guest users ) --> */}
+            {/* <!-- Register Page (Only for Guest users) --> */}
             <div className="register-form">
                 <form id="register" action={registerAction}>
                     <div className="container">
@@ -70,18 +60,41 @@ export default function RegisterPage() {
                         <h1>Register</h1>
 
                         <label htmlFor="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="maria@email.com" autoComplete="email" />
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="maria@email.com"
+                            autoComplete="email"
+                        />
+                        {validationErrors.email && <p style={{ color: 'red' }}>{validationErrors.email}</p>}
 
                         <label htmlFor="pass">Password:</label>
-                        <input type="password" name="password" id="register-password" autoComplete="password" />
+                        <input
+                            type="password"
+                            name="password"
+                            id="register-password"
+                            autoComplete="password"
+                        />
+                        {validationErrors.password && <p style={{ color: 'red' }}>{validationErrors.password}</p>}
 
                         <label htmlFor="con-pass">Confirm Password:</label>
-                        <input type="password" name="confirm-password" id="confirm-password" autoComplete="confirm-password" />
+                        <input
+                            type="password"
+                            name="confirm-password"
+                            id="confirm-password"
+                            autoComplete="confirm-password"
+                        />
+                        {validationErrors.confirmPassword && (
+                            <p style={{ color: 'red' }}>{validationErrors.confirmPassword}</p>
+                        )}
 
-                        <Button htmlType="submit" type="primary" className="btn submit" disabled={isPending}>Login</Button>
+                        <Button htmlType="submit" type="primary" className="btn submit" disabled={isPending}>
+                            Register
+                        </Button>
 
                         <p className="field">
-                            <span>If you already have profile click <Link to="/login">here</Link></span>
+                            <span>If you already have a profile, click <Link to="/login">here</Link></span>
                         </p>
                     </div>
                 </form>
