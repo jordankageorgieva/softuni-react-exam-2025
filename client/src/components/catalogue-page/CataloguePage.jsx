@@ -21,7 +21,7 @@ export default function CataloguePage() {
         <>
             {/* <!-- Catalogue --> */}
             <section id="catalog-page">
-                <h1>List of the Professional Prjects in [DXC, CSC, OBS] company</h1>
+                <h1>Project-Sphere in [DXC, CSC, OBS] company</h1>
                 {/* <!-- Display div: with information about every game (if any) --> */}
 
                 {games.length > 0 ?
