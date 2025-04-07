@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import gameServices from "../../services/gameServices";
+import gameServices from "../../services/projectServices";
 import CataloguePageItem from "./CataloguePageItem";
 import './CataloguePage.css';
 

@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import useScrollToTop from "../../hookCustom/useScrollToTop";
 import { useContext, useEffect, useState } from "react";
-import gameServices from "../../services/gameServices";
+import gameServices from "../../services/projectServices";
 import './EditProject.css';
 import { UserContext } from "../../hookContext/userContext";
 import CreateUpdatePage from "../create-update-page/CreateUpdatePage";

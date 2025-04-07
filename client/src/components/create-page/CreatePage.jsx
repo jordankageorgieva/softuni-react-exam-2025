@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../hookContext/userContext';
-import gameServices from '../../services/gameServices';
+import gameServices from '../../services/projectServices';
 import './CreatePage.css';
 
 import { useNavigate } from 'react-router';

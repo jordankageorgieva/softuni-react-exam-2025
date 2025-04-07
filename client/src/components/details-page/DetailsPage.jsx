@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import gameServices from "../../services/gameServices";
+import gameServices from "../../services/projectServices";
 import useScrollToTop from "../../hookCustom/useScrollToTop";
 import CommentsList from "./CommentsList";
 import CommentAdd from "./CommentAdd";

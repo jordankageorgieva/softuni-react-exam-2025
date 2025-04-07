@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"; // Correct import for Link
 import { useEffect, useState } from "react";
-import gameServices from "../../services/gameServices";
+import gameServices from "../../services/projectServices";
 import './Home.css';
 
 export default function Home() {
