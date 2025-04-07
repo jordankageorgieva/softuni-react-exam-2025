@@ -62,9 +62,6 @@ export default function DetailsPage() {
                     <p className="text">
                         {game.summary}
                     </p>
-                    <CommentsList gameId={game._id} newComment={newComment} />
-
-
                     {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
                     {accessToken &&
                         (<div className="buttons">
@@ -73,6 +70,9 @@ export default function DetailsPage() {
                                 className="button">Delete</button>
                         </div>)
                     }
+
+                    <CommentsList gameId={game._id} newComment={newComment} />
+
                 </div>
 
                 <CommentAdd

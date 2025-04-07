@@ -5,7 +5,7 @@ import './App.css';
 import CataloguePage from './components/catalogue-page/CataloguePage';
 import CreatePage from './components/create-page/CreatePage';
 import DetailsPage from './components/details-page/DetailsPage';
-import GameEdit from './components/game-edit/GameEdit';
+import GameEdit from './components/edit-page/GameEdit';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import LoginPage from './components/login-page/LoginPage';
