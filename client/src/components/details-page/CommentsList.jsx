@@ -38,10 +38,11 @@ export default function CommentsList({
         <>
             {/* <!-- Bonus ( for Guests and Users ) --> */}
             <div className="details-comments">
-                <h2>Comments:</h2>
+                
                 {
                     (comment && comment.length > 0 ) ?
                         <>
+                            <h2>Comments:</h2>
                             <ul>
                                 {comment.map(comment =>
                                     <CommentListItem

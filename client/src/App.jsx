@@ -46,8 +46,8 @@ function App() {
                 </ProtectedRoute>
               } />
               <Route path="/projects" element={<CataloguePage />} />
-              <Route path="/projects/:gameId/project-edit" element={<GameEdit />} />
-              <Route path="/projects/:gameId/project-details" element={<DetailsPage />} />
+              <Route path="/projects/:projectId/project-edit" element={<GameEdit />} />
+              <Route path="/projects/:projectId/project-details" element={<DetailsPage />} />
               <Route path="/logout" element={<LogoutPage />} />
             </Routes>
           </main>

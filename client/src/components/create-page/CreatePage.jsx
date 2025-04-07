@@ -6,6 +6,7 @@ import './CreatePage.css';
 import { useNavigate } from 'react-router';
 
 import { openDB } from "idb"; // IndexedDB helper
+import CreateUpdatePage from '../create-update-page/CreateUpdatePage';
 
 const DB_NAME = "imageDB";
 
@@ -79,20 +80,10 @@ export default function CreatePage() {
                     <div className="container">
 
                         <h1>Insert Project</h1>
-                        <label htmlFor="leg-title">Client:</label>
-                        <input type="text" id="title" name="title" placeholder="Enter project title..." />
-
-                        <label htmlFor="category">Category:</label>
-                        <input type="text" id="category" name="category" placeholder="Enter project category..." />
-
-                        <input type="file" accept="image/*" onChange={handleFileChange} />
-                        {preview && <img src={preview} alt="Preview" style={{ width: "200px", marginTop: "10px" }} />}
-
-                        <label htmlFor="summary">Summary:</label>
-                        <textarea name="summary" id="summary"></textarea>
-
-                        <label htmlFor="environment">Technical environment:</label>
-                        <textarea name="environment" id="environment"></textarea>
+                        <CreateUpdatePage 
+                            // handleFileChange={handleFileChange}
+                            // preview={preview}
+                        />
                         <input className="btn submit" type="submit" value="Create Project" />
                     </div>
                 </form>

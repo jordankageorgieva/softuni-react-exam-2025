@@ -4,23 +4,24 @@ import { useContext, useEffect, useState } from "react";
 import gameServices from "../../services/gameServices";
 import './GameEdit.css';
 import { UserContext } from "../../hookContext/userContext";
+import CreateUpdatePage from "../create-update-page/CreateUpdatePage";
 
 export default function GameEdit() {
-    const { gameId } = useParams();
-    const [game, setGame] = useState([]);
+    const { projectId } = useParams();
+    const [project, setProject] = useState([]);
 
     const { accessToken } = useContext(UserContext);
 
     const navigate = useNavigate();
 
     useScrollToTop.useScrollToTop();
-
+    console.log(projectId + " projectId");
     useEffect(() => {
-            gameServices.getGame(gameId)
+            gameServices.getGame(projectId)
                 .then(res => {
-                    setGame(res);
+                    setProject(res);
                 })
-        }, [gameId]);
+    }, [projectId]);
     
     const saveGame = (event) => {
         event.preventDefault();
@@ -28,8 +29,8 @@ export default function GameEdit() {
         const data = Object.fromEntries(formData.entries());
 
         try {
-            gameServices.updateGame(gameId, data, accessToken);
-            navigate(`/projects/${gameId}/project-details`);
+            gameServices.updateGame(projectId, data, accessToken);
+            navigate(`/projects/${projectId}/project-details`);
         } catch (error) {
             console.error('Error updating project:', error);
         }
@@ -43,20 +44,7 @@ export default function GameEdit() {
                     <div className="container">
 
                         <h1>Edit Current Project</h1>
-                        <label htmlFor="leg-title">Legendary title:</label>
-                        <input type="text" id="title" name="title" defaultValue={game.title} />
-
-                        <label htmlFor="category">Category:</label>
-                        <input type="text" id="category" name="category" defaultValue={game.category} />
-
-                        <label htmlFor="levels">MaxLevel:</label>
-                        <input type="number" id="maxLevel" name="maxLevel" min="1" defaultValue={game.maxLevel} />
-
-                        <label htmlFor="game-img">Image:</label>
-                        <input type="text" id="imageUrl" name="imageUrl" defaultValue={game.imageUrl} />
-
-                        <label htmlFor="summary">Summary:</label>
-                        <textarea name="summary" id="summary" defaultValue={game.summary}></textarea>
+                        <CreateUpdatePage  project={project}/>
                         <input className="btn submit" type="submit" value="Edit Current Project" />
 
                     </div>
