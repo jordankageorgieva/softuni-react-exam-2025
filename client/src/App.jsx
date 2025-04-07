@@ -14,7 +14,7 @@ import { Routes, Route } from 'react-router';
 import { UserContext } from './hookContext/userContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import LogoutPage from './components/logout-page/LogoutPage';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
 
