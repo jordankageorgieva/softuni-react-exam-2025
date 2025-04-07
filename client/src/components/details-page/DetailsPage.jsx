@@ -27,7 +27,7 @@ export default function DetailsPage() {
     }, [projectId]);
 
     const deleteGameHandler = () => {
-        const hasConfirm = confirm(`Are you sure you want to delete ${game.title} project?`);
+        const hasConfirm = confirm(`Are you sure you want to delete ${project.title} project?`);
         if (hasConfirm) {
             try {
                 gameServices.deleteGame(projectId, accessToken);
