@@ -14,6 +14,7 @@ import { Routes, Route } from 'react-router';
 import { UserContext } from './hookContext/userContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import LogoutPage from './components/logout-page/LogoutPage';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
 
@@ -21,14 +22,14 @@ function App() {
 
   const [authData, setAuthData] = useState({});
 
-   // putLoginActionData is the authentication handler for loggin
+  // putLoginActionData is the authentication handler for loggin
   const putLoginActionData = (authData) => {
     setAuthData(authData);
   }
 
   return (
     <>
-      <UserContext.Provider value={{...authData, putLoginActionData} }>
+      <UserContext.Provider value={{ ...authData, putLoginActionData }}>
         <div id="box">
           <Header />
 
@@ -36,13 +37,18 @@ function App() {
           <main id="main-content">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/login" element={<LoginPage  />} />
+              <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
-              <Route path="/projects/create" element={<CreatePage />} />
+
+              <Route path="/projects/create" element={
+                <ProtectedRoute isAuthenticated={authData.token}>
+                  <CreatePage />
+                </ProtectedRoute>
+              } />
               <Route path="/projects" element={<CataloguePage />} />
               <Route path="/projects/:gameId/project-edit" element={<GameEdit />} />
               <Route path="/projects/:gameId/project-details" element={<DetailsPage />} />
-              <Route path="/logout" element={<LogoutPage/>} />
+              <Route path="/logout" element={<LogoutPage />} />
             </Routes>
           </main>
           {/* <GameEdit />
