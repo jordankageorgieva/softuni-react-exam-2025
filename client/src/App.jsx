@@ -12,11 +12,8 @@ import LoginPage from './components/login-page/LoginPage';
 import RegisterPage from './components/register-page/RegisterPage';
 import { Routes, Route } from 'react-router';
 import { UserContext } from './hookContext/userContext';
-import { BrowserRouter as Router } from 'react-router-dom';
 import LogoutPage from './components/logout-page/LogoutPage';
-import ProtectedRoute from './components/guards/AuthGuard';
 import AuthGuard from './components/guards/AuthGuard';
-// import DetailsPage from './components/details-page/DetailsPage';
 const DetailsPage = lazy(() => import('./components/details-page/DetailsPage'));
 
 function App() {
