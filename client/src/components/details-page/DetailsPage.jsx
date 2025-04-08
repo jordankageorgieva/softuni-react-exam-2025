@@ -20,7 +20,7 @@ export default function DetailsPage() {
     useScrollToTop.useScrollToTop();
 
     useEffect(() => {
-        gameServices.getGame(projectId)
+        gameServices.getProject(projectId)
             .then(res => {
                 setProject(res);
             })
@@ -30,7 +30,7 @@ export default function DetailsPage() {
         const hasConfirm = confirm(`Are you sure you want to delete ${project.title} project?`);
         if (hasConfirm) {
             try {
-                gameServices.deleteGame(projectId, accessToken);
+                gameServices.deleteProject(projectId, accessToken);
                 navigate('/projects');
             } catch (error) {
                 console.error('Error deleting game:', error);
