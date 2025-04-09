@@ -5,16 +5,17 @@ import { BrowserRouter } from 'react-router';
 import { UserContext } from '../../hookContext/userContext';
 
 describe('RegisterPage Component', () => {
-    test('renders with the correct label', () => {
+    test('renders the registration form', () => {
         render(
-            <BrowserRouter> {/* Use BrowserRouter instead of MemoryRouter */}
-                <UserContext.Provider value={{ putLoginActionData: () => { } }}>
+            <BrowserRouter>
+                <UserContext.Provider value={{}}>
                     <RegisterPage />
                 </UserContext.Provider>
             </BrowserRouter>
         );
-        // Check if the login form is rendered
-        expect(screen.getByText('Register')).toBeInTheDocument();
-    });
 
+        // Check if the form elements are rendered
+        expect(screen.getByText('Register')).toBeInTheDocument();
+        expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
+    });
 });
