@@ -1,5 +1,5 @@
 import { useActionState, useContext, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../hookContext/userContext";
 import useFormValidation from "../../hookCustom/useFormValidation"; // Import the custom hook
@@ -11,6 +11,11 @@ export default function LoginPage() {
     const { validationErrors, validateForm } = useFormValidation(); // Use data validation
 
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log("PrivateRoute location Login:", location);
+
+    const from = location.state?.from?.pathname || "/";
+
     const { putLoginActionData } = useContext(UserContext);
     const { login } = useLogin();
 
@@ -28,7 +33,7 @@ export default function LoginPage() {
             console.log('Login successful:', authData);
 
             putLoginActionData(authData);
-            navigate("/projects");
+            navigate(from, { replace: true }); // go back to the originally requested page
         } catch (error) {
             console.error('Error during login:', error);
 

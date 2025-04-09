@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../hookContext/userContext';
 
 export default function AuthGuard({ children }) {
@@ -7,6 +7,7 @@ export default function AuthGuard({ children }) {
 
     console.log("AuthGuard isAuthenticated: " + accessToken);
     const navigate = useNavigate();
+    const location = useLocation();
     if (accessToken === undefined) {
         console.log("AuthGuard isAuthenticated is undefined: " + accessToken);
     }
@@ -17,9 +18,9 @@ export default function AuthGuard({ children }) {
     useEffect(() => {
         if (!accessToken) {
             console.log("AuthGuard isAuthenticated is undefined: " + accessToken);
-            navigate('/login', { replace: true });
+            navigate("/login", { state: { from: location }, replace: true });
         } 
-    }, [accessToken, navigate]);
+    }, [accessToken, navigate, location]);
 
     return accessToken ? children : null;
 };
