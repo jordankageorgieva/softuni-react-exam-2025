@@ -57,7 +57,7 @@ export default function RegisterPage() {
                 <form id="register" action={registerAction}>
                     <div className="container">
                         <div className="brand-logo"></div>
-                        <h1>Register</h1>
+                        <h1>Register Form</h1>
 
                         <label htmlFor="email">Email:</label>
                         <input
