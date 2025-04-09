@@ -19,9 +19,9 @@ export default function RegisterPage() {
 
         // Validate the form
         const errors = validateForm(state);
-        if (!state.password || state.password !== confirmPassword) {
+        if (Object.keys(errors).length == 0 && (!state.password || state.password !== confirmPassword)) {
             errors.confirmPassword = "Passwords do not match.";
-        }
+        }         
 
         if (Object.keys(errors).length > 0) {
             setError(null); // Clear any previous error
