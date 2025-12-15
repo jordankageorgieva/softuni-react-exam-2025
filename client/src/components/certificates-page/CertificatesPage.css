@@ -1,0 +1,28 @@
+#certificates-page {
+    background-color: #fff; /* Reverted to default white background */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.certificates-list {
+    list-style: none;
+    padding: 0;
+}
+
+.certificate-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.certificate-item h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.certificate-item p {
+    margin: 5px 0;
+    color: #555;
+}

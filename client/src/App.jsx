@@ -3,9 +3,10 @@ import './index.css'
 import './App.css';
 
 import CataloguePage from './components/catalogue-page/CataloguePage';
+
 import CreatePage from './components/create-page/CreatePage';
 
-import GameEdit from './components/edit-page/EditProject';
+import EditProject from './components/edit-page/EditProject';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import LoginPage from './components/login-page/LoginPage';
@@ -14,6 +15,8 @@ import { Routes, Route } from 'react-router';
 import { UserContext } from './hookContext/userContext';
 import LogoutPage from './components/logout-page/LogoutPage';
 import AuthGuard from './components/guards/AuthGuard';
+import EurUsdPredictionPage from './components/eur-usd-prediction-page/EurUsdPredictionPage';
+import CertificatesPage from './components/certificates-page/CertificatesPage';
 const DetailsPage = lazy(() => import('./components/details-page/DetailsPage'));
 
 function App() {
@@ -24,6 +27,7 @@ function App() {
 
   // putLoginActionData is the authentication handler for loggin
   const putLoginActionData = (authData) => {
+    console.log("App.jsx - putLoginActionData called with:", authData);
     setAuthData(authData);
   }
 
@@ -40,6 +44,8 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/projects" element={<CataloguePage />} />
+              <Route path="/certificates" element={<CertificatesPage />} />
+              <Route path="/eur-usd-prediction" element={<EurUsdPredictionPage />} />
               <Route path="/projects/:projectId/project-details" element={<DetailsPage />} />
 
               <Route path="/projects/create" element={
@@ -50,13 +56,18 @@ function App() {
               />
               <Route path="/projects/:projectId/project-edit" element={
                 <AuthGuard isAuthenticated={authData.token}>
-                  <GameEdit />
+                  <EditProject />
                 </AuthGuard>
               }
               />
 
               <Route path="/logout" element={<AuthGuard isAuthenticated={authData.token}>
                 <LogoutPage />
+              </AuthGuard>
+              }
+              />
+              <Route path="/eur-usd-prediction" element={<AuthGuard isAuthenticated={authData.token}>
+                <EurUsdPredictionPage />
               </AuthGuard>
               }
               />
