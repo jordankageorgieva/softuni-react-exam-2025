@@ -6,6 +6,7 @@ export default function AuthGuard({ children }) {
     const { accessToken, putLoginActionData } = useContext(UserContext);
 
     console.log("AuthGuard isAuthenticated: " + accessToken);
+    console.log("AuthGuard putLoginActionData: " + putLoginActionData);
     const navigate = useNavigate();
     const location = useLocation();
     if (accessToken === undefined) {

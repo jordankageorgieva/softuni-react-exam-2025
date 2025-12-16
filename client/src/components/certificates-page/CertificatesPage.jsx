@@ -1,4 +1,6 @@
 import React from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../../hookContext/userContext';
 import './CertificatesPage.css';
 
 export default function CertificatesPage() {
@@ -6,8 +8,11 @@ export default function CertificatesPage() {
         { id: 1, name: 'Programming Basic - January 2025', organization: 'SoftUni', date: '2025-January', fileUrl: '/images/basics.jpg' },
         { id: 2, name: 'Programming Fundamentals with Python May 2025', organization: 'SoftUni', date: '2025-May', fileUrl: '/images/fundamentals.jpg' },
         { id: 3, name: 'Programming Advance with Python September 2025', organization: 'SoftUni', date: '2025-September', fileUrl: '/images/advance.jpg' },
-        { id: 3, name: 'Python OOP October 2025', organization: 'SoftUni', date: '2025-October', fileUrl: '/images/oop.jpg' },
+        { id: 4, name: 'Python OOP October 2025', organization: 'SoftUni', date: '2025-October', fileUrl: '/images/oop.jpg' },
     ];
+
+    const { accessToken } = useContext(UserContext);
+    console.log(accessToken);
 
     return (
         <section id="certificates-page">

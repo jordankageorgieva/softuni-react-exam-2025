@@ -44,9 +44,23 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/projects" element={<CataloguePage />} />
-              <Route path="/certificates" element={<CertificatesPage />} />
-              <Route path="/eur-usd-prediction" element={<EurUsdPredictionPage />} />
+              {/* <Route path="/certificates" element={<CertificatesPage />} /> */}
+              {/* <Route path="/eur-usd-prediction" element={<EurUsdPredictionPage />} /> */}
               <Route path="/projects/:projectId/project-details" element={<DetailsPage />} />
+
+              <Route path="/eur-usd-prediction" element={
+                <AuthGuard isAuthenticated={!!authData.token}>
+                  <EurUsdPredictionPage />
+                </AuthGuard>
+              }
+              />
+
+              <Route path="/certificates" element={
+                <AuthGuard isAuthenticated={!!authData.token}>
+                  <CertificatesPage />
+                </AuthGuard>
+              }
+              />
 
               <Route path="/projects/create" element={
                 <AuthGuard isAuthenticated={authData.token}>
