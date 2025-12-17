@@ -11,7 +11,7 @@ app.add_middleware(
         "https://softuni-react-exam-2025-test.vercel.app"
     ],
     # allow_origins=["*"]
-    # allow_credentials=True,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
