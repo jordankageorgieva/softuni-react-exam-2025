@@ -8,7 +8,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://softuni-react-exam-2025-test.vercel.app/"
+        "https://softuni-react-exam-2025-test.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
