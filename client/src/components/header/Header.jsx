@@ -18,7 +18,7 @@ export default function Header() {
                         ? (
                             <div id="user">
                                 <Link to="/projects/create">Add Project</Link>
-                                <Link to="/eur-usd-prediction">EUR/USD Prediction</Link>
+                                <Link to="/eur-usd">EUR/USD</Link>
                                 <Link to="/certificates">Certificates</Link>
                                 <Link to="/logout">Logout</Link>
                                 <Link>{email}</Link>

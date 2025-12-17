@@ -45,10 +45,10 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/projects" element={<CataloguePage />} />
               {/* <Route path="/certificates" element={<CertificatesPage />} /> */}
-              {/* <Route path="/eur-usd-prediction" element={<EurUsdPredictionPage />} /> */}
+              {/* <Route path="/eur-usd" element={<EurUsdPredictionPage />} /> */}
               <Route path="/projects/:projectId/project-details" element={<DetailsPage />} />
 
-              <Route path="/eur-usd-prediction" element={
+              <Route path="/eur-usd" element={
                 <AuthGuard isAuthenticated={!!authData.token}>
                   <EurUsdPredictionPage />
                 </AuthGuard>
